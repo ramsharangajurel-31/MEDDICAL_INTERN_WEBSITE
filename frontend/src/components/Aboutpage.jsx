@@ -30,5 +30,5 @@ export default function Aboutpage() {
         </p>
       </div>
     </section>
-  );
+  );    
 }

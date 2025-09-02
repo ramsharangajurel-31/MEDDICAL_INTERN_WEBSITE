@@ -10,6 +10,7 @@ import Services from './pages/Services';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import TopHeader from './components/layout/TopHeader';
+import ServiceDetails from './components/ServiceDetails';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/service/:id" element={<ServiceDetails />} />
           <Route path="/doctors" element={<Doctor />} />
           <Route path="/news" element={<News />} />
           <Route path="/contact" element={<Contact />} />

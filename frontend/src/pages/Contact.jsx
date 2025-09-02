@@ -1,6 +1,6 @@
 import React from 'react'
-import ContactBanner from '../components/layout/ContactBanner'
-import ContactForm from '../components/layout/ContactForm'
+import ContactBanner from '../components/ContactBanner.jsx';
+import ContactForm from '../components/ContactForm.jsx';
 
 const contact = () => {
   return (

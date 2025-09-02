@@ -1,12 +1,15 @@
 import React from 'react'
-import AboutBanner from '../components/layout/AboutBanner'
-import Aboutpage from './Aboutpage'
+import AboutBanner from '../components/AboutBanner.jsx';
+import Aboutpage from '../components/Aboutpage.jsx';
+import Testimonial from '../components/Testimonial.jsx';
+
 
 const about = () => {
   return (
     <div>
     <AboutBanner />
     <Aboutpage />
+    <Testimonial />
     </div>
   )
 }
