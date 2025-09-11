@@ -8,6 +8,7 @@ import dermatologyImg from "../assets/dermatology.jpeg";
 import orthopedicImg from "../assets/orthopedic.jpeg";
 import dnatestingImg from "../assets/dnatesting.jpeg";
 
+// Service data
 const serviceData = {
   "free-checkup": {
     title: "Free Checkup",
@@ -23,8 +24,8 @@ const serviceData = {
       "Always Caring",
     ],
     descriptionParagraphs: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Quisque placerat scelerisque tortor ornare ornare Convallis felis vitae tortor augue. Velit nascetur proin massa in. Consequat faucibus porttitor enim et.",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque. Convallis felis vitae tortor augue. Velit nascetur proin massa in.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+      "Quisque placerat scelerisque. Convallis felis vitae tortor augue.",
     ],
   },
   cardiogram: {
@@ -41,8 +42,8 @@ const serviceData = {
       "Trusted by patients",
     ],
     descriptionParagraphs: [
-      "Our cardiogram services provide advanced heart monitoring and diagnostic accuracy. We use state-of-the-art equipment to ensure the best care.",
-      "Our team of expert cardiologists offers personalized care tailored to each patient's needs.",
+      "Our cardiogram services provide advanced heart monitoring...",
+      "Our team of expert cardiologists offers personalized care.",
     ],
   },
   "dna-testing": {
@@ -59,7 +60,7 @@ const serviceData = {
       "Expert analysis",
     ],
     descriptionParagraphs: [
-      "DNA testing for medical, ancestry, and personal health insights. Our tests are confidential and secure.",
+      "DNA testing for medical, ancestry, and personal health insights...",
       "We provide accurate results with expert analysis to help you understand your genetic information.",
     ],
   },
@@ -119,63 +120,90 @@ const serviceData = {
   },
 };
 
-const ServiceDetails = () => {
+const ServiceDetails = ({ allServicesMode = false }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const service = serviceData[id];
 
-  if (!service) return <h2>Service Not Found</h2>;
+  // SINGLE SERVICE MODE
+  const service = !allServicesMode && id ? serviceData[id] : null;
+
+  if (!allServicesMode && id && !service) return <h2>Service Not Found</h2>;
 
   return (
     <div>
-      {/* Static Banner */}
-      <section
-        className="service-banner"
-        style={{ backgroundImage: `url(${service.image})` }}
-      >
-        <div className="container service-banner-inner">
-          <p className="breadcrumb">Home / Services / {service.title}</p>
-          <h1 className="service-title">{service.title}</h1>
-        </div>
-      </section>
-
-      {/* Two-column Layout */}
-      <div className="service-details-container">
-        {/* Sidebar */}
-        <div className="sidebar">
-          {Object.keys(serviceData).map((key) => (
-            <div
-              key={key}
-              className={`sidebar-item ${id === key ? "active" : ""}`}
-              onClick={() => navigate(`/service/${key}`)}
-            >
-              {serviceData[key].icon}
-              <span style={{ marginLeft: "8px" }}>{serviceData[key].title}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Main Content */}
-        <div className="service-content">
-          <img src={service.image} alt={service.title} />
-          <h2>{service.descriptionHeading}</h2>
-          <div className="bullet-points">
-            <ul>
-              {service.bulletPoints.slice(0, 3).map((point, idx) => (
-                <li key={idx}>{point}</li>
-              ))}
-            </ul>
-            <ul>
-              {service.bulletPoints.slice(3).map((point, idx) => (
-                <li key={idx}>{point}</li>
-              ))}
-            </ul>
+      {/* ALL SERVICES MODE (Homepage) */}
+      {allServicesMode && (
+        <div className="service-header">
+          <h5 className="header-title">CARE YOU CAN BELIEVE IN</h5>
+          <h2 className="header-subtitle">Our Services</h2>
+          <div className="all-services-grid">
+            {Object.keys(serviceData).map((key) => (
+              <div
+                key={key}
+                className="service-card"
+                onClick={() => navigate(`/service/${key}`)}
+              >
+                {serviceData[key].icon}
+                <h3>{serviceData[key].title}</h3>
+              </div>
+            ))}
           </div>
-          {service.descriptionParagraphs.map((para, idx) => (
-            <p key={idx}>{para}</p>
-          ))}
         </div>
-      </div>
+      )}
+
+      {/* SINGLE SERVICE MODE */}
+      {!allServicesMode && service && (
+        <>
+          {/* Banner */}
+          <section
+            className="service-banner"
+            style={{ backgroundImage: `url(${service.image})` }}
+          >
+            <div className="container service-banner-inner">
+              <p className="breadcrumb">Home / Services / {service.title}</p>
+              <h1 className="service-title">{service.title}</h1>
+            </div>
+          </section>
+
+          {/* Two-column layout */}
+          <div className="service-details-container">
+            {/* Sidebar */}
+            <div className="sidebar">
+              {Object.keys(serviceData).map((key) => (
+                <div
+                  key={key}
+                  className={`sidebar-item ${id === key ? "active" : ""}`}
+                  onClick={() => navigate(`/service/${key}`)}
+                >
+                  {serviceData[key].icon}
+                  <span style={{ marginLeft: "8px" }}>{serviceData[key].title}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Main content */}
+            <div className="service-content">
+              <img src={service.image} alt={service.title} />
+              <h2>{service.descriptionHeading}</h2>
+              <div className="bullet-points">
+                <ul>
+                  {service.bulletPoints.slice(0, 3).map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+                <ul>
+                  {service.bulletPoints.slice(3).map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+              {service.descriptionParagraphs.map((para, idx) => (
+                <p key={idx}>{para}</p>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

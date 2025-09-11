@@ -1,57 +1,69 @@
-import React from "react";
-import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope, FaClock } from "react-icons/fa";
+import React, { useState } from "react";
 
 
 export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Form submitted!"); // Later replace with backend
+    setFormData({ name: "", email: "", subject: "", message: "" });
+  };
+
   return (
-    <div className="contact-container">
-      {/* Left Contact Form */}
-      <div className="contact-form">
-        <h4 className="form-subtitle">GET IN TOUCH</h4>
-        <h2 className="form-title">Contact</h2>
+    <div className="contact-form-container">
+      <h5 className="contact-subtitle">GET IN TOUCH</h5>
+      <h2 className="contact-title">Contact</h2>
 
-        <form className="form-box" onSubmit={(e) => e.preventDefault()}>
-          <div className="form-row two">
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-          </div>
-          <div className="form-row">
-            <input type="text" placeholder="Subject" />
-          </div>
-          <div className="form-row">
-            <textarea placeholder="Message"></textarea>
-          </div>
-          <button type="submit" className="submit-btn">SUBMIT</button>
-        </form>
-      </div>
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <div className="form-row">
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-      {/* Right Info Cards */}
-      <div className="contact-info">
-        <div className="info-card">
-          <FaPhoneAlt className="icon" />
-          <h4>EMERGENCY</h4>
-          <p>(237) 681-812-255</p>
-          <p>(237) 666-331-894</p>
-        </div>
-        <div className="info-card ">
-          <FaMapMarkerAlt className="icon" />
-          <h4>LOCATION</h4>
-          <p>0123 Some place</p>
-          <p>9876 Some country</p>
-        </div>
-        <div className="info-card">
-          <FaEnvelope className="icon" />
-          <h4>EMAIL</h4>
-          <p>fildineeso@gmail.com</p>
-          <p>myebstudios@gmail.com</p>
-        </div>
-        <div className="info-card">
-          <FaClock className="icon" />
-          <h4>WORKING HOURS</h4>
-          <p>Mon-Sat 09:00 - 20:00</p>
-          <p>Sunday Emergency only</p>
-        </div>
-      </div>
+        <input
+          type="text"
+          name="subject"
+          placeholder="Subject"
+          value={formData.subject}
+          onChange={handleChange}
+          required
+        />
+
+        <textarea
+          name="message"
+          placeholder="Message"
+          rows="5"
+          value={formData.message}
+          onChange={handleChange}
+          required
+        ></textarea>
+
+        <button type="submit">SUBMIT</button>
+      </form>
     </div>
   );
 }
