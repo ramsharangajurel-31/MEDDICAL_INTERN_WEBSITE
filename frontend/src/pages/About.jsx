@@ -3,6 +3,7 @@ import AboutBanner from '../components/AboutBanner.jsx';
 import Aboutpage from '../components/Aboutpage.jsx';
 import Testimonial from '../components/Testimonial.jsx';
 import ContactInfoCards from '../components/ContactInfoCards.jsx';
+import DoctorSlider from '../components/DoctorSlider.jsx';
 
 
 const about = () => {
@@ -11,6 +12,7 @@ const about = () => {
     <AboutBanner />
     <Aboutpage />
     <Testimonial />
+    <DoctorSlider />
     <ContactInfoCards />
     </div>
   )

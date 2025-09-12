@@ -8,7 +8,7 @@ export default function ServiceBanner() {
       style={{ backgroundImage: `url(${contactSectionImg})` }}
     >
       <div className="container service-banner-inner">
-        <p className="breadcrumb">Home / Services</p>
+        <p className="service-breadcrumb">Home / Services</p>
         <h1 className="service-title">Our Services</h1>
       </div>
     </section>

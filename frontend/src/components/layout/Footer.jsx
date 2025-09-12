@@ -36,17 +36,7 @@ export default function Footer() {
               placeholder="Enter your email address"
               aria-label="Email address"
             />
-            <button type="submit" aria-label="Subscribe">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M15.854.146a.5.5 0 0 0-.707 0L1.5 14.793V10.5a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H1.707l13.647-13.647a.5.5 0 0 0 0-.707z"/>
-              </svg>
-            </button>
+            
           </form>
         </div>
       </div>
