@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroSection from '../components/herosection';
+import HeroSection from '../components/HeroSection';
 import ContactInfoCards from '../components/ContactInfoCards';
 import Aboutsection from '../components/Aboutsection';
 import ServiceDetails from '../components/ServiceDetails';
