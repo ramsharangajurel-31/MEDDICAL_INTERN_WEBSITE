@@ -16,28 +16,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Header with logo & info */}
-      <header className="header">
-        <h1 className="logo logo-dark">MedCare</h1>
-        <div className="info-section">
-          <div className="info-item">
-            <FaPhone className="icon" />
-            <div>
-              <p className="title">Call Us</p>
-              <a href="tel:+1234567890" className="link">+1 234 567 890</a>
-            </div>
-          </div>
-          <div className="info-item">
-            <FaEnvelope className="icon" />
-            <div>
-              <p className="title">Email</p>
-              <a href="mailto:info@medcare.com" className="link">info@medcare.com</a>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Navbar */}
+    
       <nav className="main-navbar">
         <div className="nav-container">
           <div className="nav-left">
