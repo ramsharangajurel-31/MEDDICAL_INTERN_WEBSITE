@@ -1,7 +1,7 @@
 import React from 'react'
 import DoctotBanner from '../components/DoctotBanner'
 import DoctorPage from '../components/DoctorPage'
-import Testimonial from '../components/Testimonial'
+import Testimonial from '../components/testimonial'
 import ContactInfoCards from '../components/ContactInfoCards'
 
 const doctor = () => {
