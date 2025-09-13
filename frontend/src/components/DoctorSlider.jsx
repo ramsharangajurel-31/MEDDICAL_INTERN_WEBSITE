@@ -41,16 +41,26 @@ const DoctorSlider = () => {
   ];
 
   return (
-     <div className="specialties-container">
+    <div className="specialties-container">
       <p className="subtitle">TRUSTED CARE</p>
       <h2 className="title">OUR DOCTORS</h2>
       <Swiper
         modules={[Pagination, Autoplay]}
         spaceBetween={10}
-        slidesPerView={3}   // always show 3 slides
         loop={true}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
+        breakpoints={{
+          0: {
+            slidesPerView: 1, // mobile
+          },
+          768: {
+            slidesPerView: 2, // tablets
+          },
+          1024: {
+            slidesPerView: 3, // desktop
+          },
+        }}
       >
         {doctors.map((doc, index) => (
           <SwiperSlide key={index}>
