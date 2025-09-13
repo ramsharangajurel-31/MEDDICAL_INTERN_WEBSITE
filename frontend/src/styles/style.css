@@ -169,7 +169,7 @@ body{
   .header {
     flex-direction: column;
     align-items: center;
-    padding: 2px;
+    padding: 0px;
   }
 
   .info-section { display: none; }
