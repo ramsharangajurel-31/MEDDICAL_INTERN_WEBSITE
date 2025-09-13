@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../assets/aboutbanner.jpeg';
+import img from '../assets/aboutpage.jpeg';
 
 export default function Aboutpage() {
   return (

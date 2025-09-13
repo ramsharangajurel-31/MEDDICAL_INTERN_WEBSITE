@@ -232,7 +232,7 @@ body{
   padding: 50px;
   background-color: #bdcdfa;
   position: relative;
-  height:70vh;
+  height:80vh;
 }
 
 .hero-content {
@@ -277,7 +277,61 @@ body{
   width: 450px;
   border-radius: 10px;
 }
+.appointment-card{
+  position: absolute;
+  bottom: -35px; /* overlaps hero */
 
+}
+.appointment-buttons{
+  display: flex;
+  gap: 10rem;
+  margin-left: 12rem;
+  position: relative;
+  top:90%;
+}
+.dark-blue{
+  background-color: #1f2a56;
+  color: white;
+  border: none;
+  padding: 25px ;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.dark-blue .icon{
+  color: #a0b4eb;
+  margin-left: 8px;
+}
+
+.light-blue{
+  background-color: #a0b4eb;
+  color: white;
+  border: none;
+  padding: 25px ;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.light-blue .icon{
+  color: #1f2a56;
+  margin-left: 8px;
+}
+.sky-blue{
+  background-color: #40a9ff;
+  color: #1f2a56;
+  border: none;
+  padding: 25px ;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.sky-blue .icon{
+  color: #1f2a56;
+  margin-left: 8px;
+}
 @media (max-width: 900px) {
   .hero-container {
     flex-direction: column-reverse;

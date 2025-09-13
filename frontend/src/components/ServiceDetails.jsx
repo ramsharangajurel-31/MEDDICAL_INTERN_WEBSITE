@@ -187,7 +187,7 @@ const ServiceDetails = ({ allServicesMode = false, homeMode = false }) => {
       {/* SINGLE SERVICE */}
       {!allServicesMode && service && (
         <>
-         {!homeMode && <ServiceBanner />}
+          {!homeMode && <ServiceBanner breadcrumb={`Home / Services / ${service.title}`} title={service.title} />}
           {homeMode && (
             <div className="service-home-container">
               <h5 className="service-home-subtitle">CARE YOU CAN BELIEVE IN</h5>

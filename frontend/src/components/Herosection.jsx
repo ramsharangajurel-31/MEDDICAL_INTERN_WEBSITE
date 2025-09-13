@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import doctorImage from "../assets/herosection.jpeg"; // replace with your uploaded image path
+import { FaCalendarAlt, FaCreditCard, FaUsers } from "react-icons/fa";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const HeroSection = () => {
   };
 
   return (
+    <>
     <div className="hero-container">
       <div className="hero-content">
         <p className="hero-subtitle">CARING FOR LIFE</p>
@@ -20,7 +22,22 @@ const HeroSection = () => {
       <div className="hero-image">
         <img src={doctorImage} alt="Doctor" />
       </div>
-    </div>
+      </div>
+          <div className="appointment-card">
+        <div className="appointment-buttons">
+          <button className="appt-btn dark-blue">
+            Book an Appointment <FaCalendarAlt className="icon" />
+          </button>
+          <button className="appt-btn light-blue">
+            Book an Appointment <FaUsers className="icon" />
+          </button>
+          <button className="appt-btn sky-blue">
+            Book an Appointment <FaCreditCard className="icon" />
+          </button>
+        </div>
+        </div>
+     </>
+    
   );
 };
 
