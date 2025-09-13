@@ -179,6 +179,7 @@ body {
     align-items: center;
     padding: 10px 0;
     height:auto;
+    margin:0px;
   }
 
   .info-section,
@@ -191,7 +192,7 @@ body {
 
   .main-navbar {
     top: 70px;
-    padding: 0 1rem;
+    padding: 0 2rem;
     margin: 0;
   }
 
