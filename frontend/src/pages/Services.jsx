@@ -1,7 +1,7 @@
 import React from 'react'
-import ServiceBanner from '../components/ServiceBanner'
-import ServiceCard from '../components/ServiceCard'
-import ContactInfoCards from '../components/ContactInfoCards'
+import ServiceBanner from '../components/ServiceBanner.jsx'
+import ServiceCard from '../components/ServiceCard.jsx'
+import ContactInfoCards from '../components/ContactInfoCards.jsx'
 
 const services = () => {
   return (
