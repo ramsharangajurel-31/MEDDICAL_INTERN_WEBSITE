@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import "./styles/style.css"
 import Home from './pages/Home';
 import About from './pages/About';
@@ -11,8 +11,13 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import TopHeader from './components/layout/TopHeader';
 import ServiceDetails from './components/ServiceDetails';
+import AppointmentPage from './pages/AppointmentPage';
+import AdminPanel from './pages/AdminPanel';
 
 function App() {
+  const location = useLocation();
+  const isAdmin = location.pathname === '/admin';
+
   return (
     < >
       <TopHeader />
@@ -26,9 +31,11 @@ function App() {
           <Route path="/doctors" element={<Doctor />} />
           <Route path="/news" element={<News />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/appointment" element={<AppointmentPage />} />
+          <Route path="/admin" element={<AdminPanel />} />
         </Routes>
       </main>
-      <Footer />
+      {!isAdmin && <Footer />}
     </>
   );
 }

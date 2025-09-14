@@ -1,7 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaChevronDown, FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AppointmentForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    gender: "",
+    email: "",
+    phone: "",
+    date: "",
+    time: "",
+    doctor: "",
+    department: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Combine date and time into a single ISO string for backend
+    const dateTime = new Date(formData.date + "T" + formData.time);
+
+    // Prepare data to send to backend
+    const appointmentData = {
+      name: formData.name,
+      gender: formData.gender,
+      email: formData.email,
+      phone: formData.phone,
+      date: dateTime.toISOString(),
+      time: formData.time,
+      doctor: formData.doctor,
+      department: formData.department,
+      reason: formData.message,
+    };
+
+    try {
+      const response = await fetch("/api/appointments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(appointmentData),
+      });
+
+      if (response.ok) {
+        toast.success("Appointment booked successfully!");
+        setFormData({
+          name: "",
+          gender: "",
+          email: "",
+          phone: "",
+          date: "",
+          time: "",
+          doctor: "",
+          department: "",
+          message: "",
+        });
+      } else {
+        toast.error("Failed to book appointment.");
+      }
+    } catch (error) {
+      toast.error("Error booking appointment: " + error.message);
+    }
+  };
+
   return (
     <div className="appointment-container">
       {/* Left Section */}
@@ -17,15 +88,27 @@ const AppointmentForm = () => {
 
       {/* Right Section (Form) */}
       <div className="appointment-right">
-        <form>
+        <form onSubmit={handleSubmit}>
           {/* Name + Gender */}
           <div className="form-row">
             <div className="input-icon-wrapper">
-              <input type="text" placeholder="Name" />
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
             </div>
 
             <div className="select-wrapper">
-              <select defaultValue="">
+              <select
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                required
+              >
                 <option value="" disabled>
                   Gender
                 </option>
@@ -39,23 +122,51 @@ const AppointmentForm = () => {
           {/* Email + Phone */}
           <div className="form-row">
             <div className="input-icon-wrapper">
-              <input type="email" placeholder="Email" />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
             </div>
 
             <div className="input-icon-wrapper">
-              <input type="text" placeholder="Phone" />
+              <input
+                type="text"
+                name="phone"
+                placeholder="Phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
             </div>
           </div>
 
           {/* Date + Time */}
           <div className="form-row">
             <div className="input-icon-wrapper">
-              <input type="text" placeholder="Date" />
+              <input
+                type="date"
+                name="date"
+                placeholder="Date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+              />
               <FaRegCalendarAlt className="input-icon" />
             </div>
 
             <div className="input-icon-wrapper">
-              <input type="text" placeholder="Time" />
+              <input
+                type="time"
+                name="time"
+                placeholder="Time"
+                value={formData.time}
+                onChange={handleChange}
+                required
+              />
               <FaRegClock className="input-icon" />
             </div>
           </div>
@@ -63,7 +174,12 @@ const AppointmentForm = () => {
           {/* Doctor + Department */}
           <div className="form-row">
             <div className="select-wrapper">
-              <select defaultValue="">
+              <select
+                name="doctor"
+                value={formData.doctor}
+                onChange={handleChange}
+                required
+              >
                 <option value="" disabled>
                   Doctor
                 </option>
@@ -74,7 +190,12 @@ const AppointmentForm = () => {
             </div>
 
             <div className="select-wrapper">
-              <select defaultValue="">
+              <select
+                name="department"
+                value={formData.department}
+                onChange={handleChange}
+                required
+              >
                 <option value="" disabled>
                   Department
                 </option>
@@ -87,13 +208,19 @@ const AppointmentForm = () => {
 
           {/* Message */}
           <div className="form-row full-width">
-            <textarea placeholder="Message"></textarea>
+            <textarea
+              name="message"
+              placeholder="Message"
+              value={formData.message}
+              onChange={handleChange}
+            ></textarea>
           </div>
 
           <button type="submit" className="submit-btn">
             SUBMIT
           </button>
         </form>
+        <ToastContainer />
       </div>
     </div>
   );

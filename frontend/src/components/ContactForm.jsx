@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -13,10 +14,29 @@ export default function ContactForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Form submitted!"); // Later replace with backend
-    setFormData({ name: "", email: "", subject: "", message: "" });
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success(data.message || "Form submitted successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        toast.error(data.error || "Failed to submit form. Please try again.");
+      }
+    } catch (error) {
+      toast.error("Server error. Please try again later.");
+    }
   };
 
   return (
@@ -64,6 +84,7 @@ export default function ContactForm() {
 
         <button type="submit">SUBMIT</button>
       </form>
+      <ToastContainer />
     </div>
   );
 }

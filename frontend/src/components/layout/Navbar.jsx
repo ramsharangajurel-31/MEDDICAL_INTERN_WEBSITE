@@ -81,11 +81,20 @@ export default function Navbar() {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/admin"
+                  className="nav-link"
+                  onClick={handleNavItemClick}
+                >
+                  Admin Panel
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="nav-right">
             <FaSearch className="search-icon" />
-            <button className="btn-appointment">Appointment</button>
+              <Link to="/appointment" className="btn-appointment">Appointment</Link>
           </div>
         </div>
       </nav>

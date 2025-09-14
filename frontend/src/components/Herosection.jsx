@@ -23,8 +23,8 @@ const Herosection = () => {
         <img src={doctorImage} alt="Doctor" />
       </div>
       </div>
-          <div className="appointment-card">
-        <div className="appointment-buttons">
+          <div className="appointment-card-hero">
+        <div className="appointment-buttons-hero">
           <button className="appt-btn dark-blue">
             Book an Appointment <FaCalendarAlt className="icon" />
           </button>
