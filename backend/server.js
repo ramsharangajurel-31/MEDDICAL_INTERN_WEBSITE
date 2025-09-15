@@ -19,7 +19,7 @@ const connectDB = async () => {
     console.log("✅ MongoDB connected");
   } catch (err) {
     console.error("❌ MongoDB connection error:", err);
-    process.exit(1);
+    process.exit(1); // Exit if DB connection fails
   }
 };
 connectDB();
@@ -36,7 +36,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "frontend/build")));
+app.use(express.static(path.join(__dirname, "frontend/build"))); // React build folder
 
 // 7️⃣ Dummy blog data
 const blogs = [
@@ -121,17 +121,17 @@ app.get("/api/blogs", (req, res) => {
   });
 });
 
-// Default API route
+// 9️⃣ Default API route
 app.get("/", (req, res) => {
   res.send("🚀 Backend is running!");
 });
 
-// 9️⃣ Serve React frontend for all other routes (fixed wildcard)
-app.get("/*", (req, res) => {
+// 🔟 Catch-all route to serve React frontend
+app.use((req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
 });
 
-// 10️⃣ Start server
+// 1️⃣1️⃣ Start server
 const PORT = process.env.PORT || 1000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
