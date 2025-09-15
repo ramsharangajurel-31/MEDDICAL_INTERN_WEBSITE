@@ -1,23 +1,28 @@
-// 1️⃣ Load environment variables first
+// 1️⃣ Load environment variables
 import dotenv from "dotenv";
 dotenv.config();
 
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from "url";
 
-// 2️⃣ Import routes AFTER dotenv
+// 2️⃣ Import routes
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 
-// 3️⃣ Connect to MongoDB
-mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+// 3️⃣ Connect to MongoDB (clean, no deprecated warnings)
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log("✅ MongoDB connected");
+  } catch (err) {
+    console.error("❌ MongoDB connection error:", err);
+    process.exit(1); // Exit if DB connection fails
+  }
+};
+connectDB();
 
 // 4️⃣ Initialize Express
 const app = express();
@@ -25,9 +30,15 @@ const app = express();
 // 5️⃣ Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
 
-// 6️⃣ Dummy blog data
+// 6️⃣ Serve frontend (React build)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "frontend/build"))); // React build folder
+
+// 7️⃣ Dummy blog data
 const blogs = [
   {
     id: 1,
@@ -82,7 +93,7 @@ const blogs = [
   },
 ];
 
-// 7️⃣ Routes
+// 8️⃣ Routes
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/contact", contactRoutes);
 
@@ -91,7 +102,6 @@ app.get("/api/blogs", (req, res) => {
   const { search, page = 1, limit = 5 } = req.query;
   let results = blogs;
 
-  // 🔍 Search filter
   if (search) {
     results = blogs.filter(
       (b) =>
@@ -100,7 +110,6 @@ app.get("/api/blogs", (req, res) => {
     );
   }
 
-  // 📑 Pagination
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + parseInt(limit);
   const paginatedResults = results.slice(startIndex, endIndex);
@@ -118,7 +127,12 @@ app.get("/", (req, res) => {
   res.send("🚀 Backend is running!");
 });
 
-// 8️⃣ Start server
+// Serve React frontend for all other routes
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+});
+
+// 9️⃣ Start server
 const PORT = process.env.PORT || 1000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
