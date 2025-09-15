@@ -1,24 +1,33 @@
-import express from "express";
+// 1️⃣ Load environment variables first
 import dotenv from "dotenv";
+dotenv.config();
+
+import express from "express";
 import cors from "cors";
-import connectDB from "./config/db.js";
+import mongoose from "mongoose";
+
+// 2️⃣ Import routes AFTER dotenv
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 
-dotenv.config();
-connectDB();
+// 3️⃣ Connect to MongoDB
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
+// 4️⃣ Initialize Express
 const app = express();
 
-// Middleware
+// 5️⃣ Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-// Server listen
-const PORT = process.env.PORT || 5000;
-
-// Dummy blog data
+// 6️⃣ Dummy blog data
 const blogs = [
   {
     id: 1,
@@ -29,7 +38,7 @@ const blogs = [
     likes: 86,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare.",
-    image: `http://localhost:${PORT}/blogs1.jpg`,
+    image: `/blogs1.jpg`,
   },
   {
     id: 2,
@@ -39,7 +48,7 @@ const blogs = [
     views: 34,
     likes: 20,
     description: "Quisque placerat scelerisque tortor ornare ornare.",
-    image: `http://localhost:${PORT}/blogs2.jpg`,
+    image: `/blogs2.jpg`,
   },
   {
     id: 3,
@@ -49,7 +58,7 @@ const blogs = [
     views: 50,
     likes: 44,
     description: "Convallis felis vitae tortor augue.",
-    image: `http://localhost:${PORT}/blogs3.jpg`,
+    image: `/blogs3.jpg`,
   },
   {
     id: 4,
@@ -59,7 +68,7 @@ const blogs = [
     views: 22,
     likes: 15,
     description: "Velit nascetur proin massa in.",
-    image: `http://localhost:${PORT}/blogs1.jpg`,
+    image: `/blogs1.jpg`,
   },
   {
     id: 5,
@@ -69,11 +78,11 @@ const blogs = [
     views: 40,
     likes: 30,
     description: "Consequat faucibus porttitor enim.",
-    image: `http://localhost:${PORT}/blogs2.jpg`,
+    image: `/blogs2.jpg`,
   },
 ];
 
-// Routes
+// 7️⃣ Routes
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/contact", contactRoutes);
 
@@ -106,9 +115,11 @@ app.get("/api/blogs", (req, res) => {
 
 // Default route
 app.get("/", (req, res) => {
-  res.send("✅ Hospital Management Backend Running");
+  res.send("🚀 Backend is running!");
 });
 
+// 8️⃣ Start server
+const PORT = process.env.PORT || 1000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
