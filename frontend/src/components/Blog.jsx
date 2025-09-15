@@ -27,7 +27,7 @@ const Blog = () => {
           {blogs.length > 0 ? (
             blogs.map((blog) => (
               <div key={blog.id} className="blog-card">
-                <img src={blog.image} alt={blog.title} className="blog-main-image" />
+                <img src={`https://meddical-intern-website.onrender.com/${blog.image}`} alt={blog.title} className="blog-main-image" />
                 <div className="blog-meta">
                   <span><FaCalendarAlt /> {blog.date}</span>
                   <span><FaUser /> {blog.author}</span>
@@ -68,7 +68,7 @@ const Blog = () => {
               <ul className="recent-posts">
                 {blogs.slice(0, 3).map((post) => (
                   <li key={post.id} className="recent-post-item">
-                    <img src={post.image} alt={post.title} />
+                    <img src={`https://meddical-intern-website.onrender.com/${post.image}`} alt={post.title} />
                     <div>
                       <small>{post.date}</small>
                       <p>{post.title}</p>
