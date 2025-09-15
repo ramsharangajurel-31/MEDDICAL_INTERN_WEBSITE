@@ -12,14 +12,14 @@ import { fileURLToPath } from "url";
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 
-// 3️⃣ Connect to MongoDB (clean, no deprecated warnings)
+// 3️⃣ Connect to MongoDB
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
     console.log("✅ MongoDB connected");
   } catch (err) {
     console.error("❌ MongoDB connection error:", err);
-    process.exit(1); // Exit if DB connection fails
+    process.exit(1);
   }
 };
 connectDB();
@@ -31,12 +31,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 6️⃣ Serve frontend (React build)
+// 6️⃣ Serve static assets and React build
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "frontend/build"))); // React build folder
+app.use(express.static(path.join(__dirname, "frontend/build")));
 
 // 7️⃣ Dummy blog data
 const blogs = [
@@ -93,11 +93,10 @@ const blogs = [
   },
 ];
 
-// 8️⃣ Routes
+// 8️⃣ API Routes
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/contact", contactRoutes);
 
-// GET blogs with search + pagination
 app.get("/api/blogs", (req, res) => {
   const { search, page = 1, limit = 5 } = req.query;
   let results = blogs;
@@ -122,17 +121,17 @@ app.get("/api/blogs", (req, res) => {
   });
 });
 
-// Default route
+// Default API route
 app.get("/", (req, res) => {
   res.send("🚀 Backend is running!");
 });
 
-// Serve React frontend for all other routes
-app.get("*", (req, res) => {
+// 9️⃣ Serve React frontend for all other routes (fixed wildcard)
+app.get("/*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
 });
 
-// 9️⃣ Start server
+// 10️⃣ Start server
 const PORT = process.env.PORT || 1000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
