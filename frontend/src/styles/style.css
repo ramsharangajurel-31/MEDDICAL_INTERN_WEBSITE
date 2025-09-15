@@ -1167,7 +1167,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 40px 80px;
+  padding: 40px auto;
   min-height: 80vh;
   gap: 30px;
   font-family: Arial, sans-serif;

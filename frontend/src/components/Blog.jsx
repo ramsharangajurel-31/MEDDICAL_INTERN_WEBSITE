@@ -10,7 +10,7 @@ const Blog = () => {
   const limit = 2;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/blogs?search=${search}&page=${page}&limit=${limit}`)
+    fetch(`https://meddical-intern-website.onrender.com/api/blogs?search=${search}&page=${page}&limit=${limit}`)
       .then((res) => res.json())
       .then((data) => {
         setBlogs(data.data);

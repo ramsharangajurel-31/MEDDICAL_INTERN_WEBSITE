@@ -44,7 +44,7 @@ const AppointmentForm = () => {
     };
 
     try {
-      const response = await fetch("/api/appointments", {
+      const response = await fetch("https://meddical-intern-website.onrender.com/api/appointments", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

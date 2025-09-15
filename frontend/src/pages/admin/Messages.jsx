@@ -8,7 +8,7 @@ const Messages = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await fetch("/api/contact");
+        const response = await fetch("https://meddical-intern-website.onrender.com/api/contact");
         if (!response.ok) throw new Error("Failed to fetch messages");
         const data = await response.json();
         setMessages(data);

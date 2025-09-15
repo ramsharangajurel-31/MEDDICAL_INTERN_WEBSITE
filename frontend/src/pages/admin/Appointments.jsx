@@ -8,7 +8,7 @@ const Appointments = () => {
 
   const fetchAppointments = async () => {
     try {
-      const response = await fetch("/api/appointments");
+      const response = await fetch("https://meddical-intern-website.onrender.com/api/appointments");
       if (!response.ok) throw new Error("Failed to fetch appointments");
       const data = await response.json();
       setAppointments(data);
@@ -26,7 +26,7 @@ const Appointments = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to cancel this appointment?")) return;
     try {
-      const response = await fetch(`/api/appointments/${id}`, {
+      const response = await fetch(`https://meddical-intern-website.onrender.com/api/appointments/${id}`, {
         method: "DELETE",
       });
       if (!response.ok) throw new Error("Failed to delete appointment");
