@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import doctorsImg from "../assets/aboutbanner.jpeg"; // adjust path if needed
+import doctorsImg from "../assets/aboutbanner.jpeg";
 
 const Aboutsection = () => {
   const navigate = useNavigate();
@@ -12,13 +12,13 @@ const Aboutsection = () => {
 
   return (
     <div className="aboutsection-container">
-      {/* Small Heading */}
+      
       <p className="aboutsection-subtitle">WELCOME TO MEDDICAL</p>
 
-      {/* Main Heading */}
+     
       <h2 className="aboutsection-title">A Great Place to Receive Care</h2>
 
-      {/* Paragraph */}
+    
       <p className="aboutsection-text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
         placerat scelerisque tortor ornare ornare. Convallis felis vitae tortor
@@ -26,12 +26,12 @@ const Aboutsection = () => {
         et.
       </p>
 
-      {/* Learn More Button */}
+  
       <button className="aboutsection-button" onClick={handleLearnMore}>
         Learn More <FaArrowRight className="aboutsection-icon" />
       </button>
 
-      {/* Image Section */}
+     
       <div className="aboutsection-image-wrapper">
         <img
           src={doctorsImg}

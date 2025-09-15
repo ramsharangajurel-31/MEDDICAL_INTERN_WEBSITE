@@ -17,7 +17,7 @@ export const submitContactForm = async (req, res) => {
   }
 
   try {
-    // Save message to DB
+    
     const contactMessage = new ContactMessage({
       name,
       email,

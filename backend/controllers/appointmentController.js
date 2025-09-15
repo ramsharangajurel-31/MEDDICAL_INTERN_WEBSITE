@@ -1,6 +1,5 @@
 import Appointment from "../models/Appointment.js";
 
-// ➕ Create new appointment
 export const createAppointment = async (req, res) => {
   try {
     const appointment = new Appointment(req.body);
@@ -11,7 +10,7 @@ export const createAppointment = async (req, res) => {
   }
 };
 
-// 📋 Get all appointments
+
 export const getAppointments = async (req, res) => {
   try {
     const appointments = await Appointment.find().sort({ date: 1 });
@@ -21,7 +20,7 @@ export const getAppointments = async (req, res) => {
   }
 };
 
-// ❌ Delete appointment
+
 export const deleteAppointment = async (req, res) => {
   try {
     const appointment = await Appointment.findByIdAndDelete(req.params.id);
@@ -31,14 +30,13 @@ export const deleteAppointment = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-//update
-// ✏️ Update appointment
+
 export const updateAppointment = async (req, res) => {
   try {
     const updated = await Appointment.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true } // return updated doc
+      { new: true } 
     );
     if (!updated) return res.status(404).json({ message: "Not found" });
     res.json(updated);

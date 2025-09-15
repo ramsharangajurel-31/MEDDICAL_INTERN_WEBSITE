@@ -1,4 +1,4 @@
-// 1️⃣ Load environment variables
+
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -8,37 +8,33 @@ import mongoose from "mongoose";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// 2️⃣ Import routes
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 
-// 3️⃣ Connect to MongoDB
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
     console.log("✅ MongoDB connected");
   } catch (err) {
     console.error("❌ MongoDB connection error:", err);
-    process.exit(1); // Exit if DB connection fails
+    process.exit(1); 
   }
 };
 connectDB();
 
-// 4️⃣ Initialize Express
+
 const app = express();
 
-// 5️⃣ Middleware
 app.use(cors());
 app.use(express.json());
 
-// 6️⃣ Serve static assets and React build
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "frontend/build"))); // React build folder
 
-// 7️⃣ Dummy blog data
+
 const blogs = [
   {
     id: 1,
@@ -93,7 +89,6 @@ const blogs = [
   },
 ];
 
-// 8️⃣ API Routes
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/contact", contactRoutes);
 
@@ -121,17 +116,16 @@ app.get("/api/blogs", (req, res) => {
   });
 });
 
-// 9️⃣ Default API route
+
 app.get("/", (req, res) => {
   res.send("🚀 Backend is running!");
 });
 
-// 🔟 Catch-all route to serve React frontend
+
 app.use((req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
 });
 
-// 1️⃣1️⃣ Start server
 const PORT = process.env.PORT || 1000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);

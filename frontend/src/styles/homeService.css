@@ -1,4 +1,3 @@
-/* Updated styles for ServiceDetails in homeMode to match the new Figma design for Home.jsx */
 
 .service-details-box.home-mode {
   display: grid;
@@ -123,7 +122,6 @@
   margin-bottom: 1rem;
 }
 
-/* Right images container */
 .service-images {
   display: flex;
   flex-direction: column;

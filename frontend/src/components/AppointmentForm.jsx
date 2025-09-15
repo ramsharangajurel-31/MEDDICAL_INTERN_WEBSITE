@@ -27,10 +27,9 @@ const AppointmentForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Combine date and time into a single ISO string for backend
+
     const dateTime = new Date(formData.date + "T" + formData.time);
 
-    // Prepare data to send to backend
     const appointmentData = {
       name: formData.name,
       gender: formData.gender,
@@ -75,7 +74,7 @@ const AppointmentForm = () => {
 
   return (
     <div className="appointment-container">
-      {/* Left Section */}
+   
       <div className="appointment-left">
         <h2>Book an Appointment</h2>
         <p>
@@ -86,10 +85,10 @@ const AppointmentForm = () => {
         </p>
       </div>
 
-      {/* Right Section (Form) */}
+
       <div className="appointment-right">
         <form onSubmit={handleSubmit}>
-          {/* Name + Gender */}
+
           <div className="form-row">
             <div className="input-icon-wrapper">
               <input
@@ -144,7 +143,7 @@ const AppointmentForm = () => {
             </div>
           </div>
 
-          {/* Date + Time */}
+  
           <div className="form-row">
             <div className="input-icon-wrapper">
               <input
@@ -171,7 +170,7 @@ const AppointmentForm = () => {
             </div>
           </div>
 
-          {/* Doctor + Department */}
+
           <div className="form-row">
             <div className="select-wrapper">
               <select
@@ -206,7 +205,7 @@ const AppointmentForm = () => {
             </div>
           </div>
 
-          {/* Message */}
+          
           <div className="form-row full-width">
             <textarea
               name="message"

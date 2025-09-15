@@ -23,7 +23,7 @@ import ServiceBanner from "./ServiceBanner";
 
 
 
-// Service Data
+
 const serviceData = {
   "free-checkup": {
     title: "Free Checkup",
@@ -163,7 +163,7 @@ const ServiceDetails = ({ allServicesMode = false, homeMode = false }) => {
 
   return (
     <div>
-      {/* ALL SERVICES */}
+
       {allServicesMode && (
         <div className="service-home-container">
           <h5 className="service-home-subtitle">CARE YOU CAN BELIEVE IN</h5>
@@ -184,7 +184,7 @@ const ServiceDetails = ({ allServicesMode = false, homeMode = false }) => {
         </div>
       )}
 
-      {/* SINGLE SERVICE */}
+   
       {!allServicesMode && service && (
         <>
           {!homeMode && <ServiceBanner breadcrumb={`Home / Services / ${service.title}`} title={service.title} />}

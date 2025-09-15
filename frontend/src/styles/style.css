@@ -2,7 +2,7 @@
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
-  padding-top: 130px; /* space for fixed header */
+  padding-top: 130px; 
   background-color: #f9fafb;
 }
 
@@ -21,7 +21,7 @@ body {
   padding: 18px 30px;
   flex-wrap: wrap;
   transition: all 0.3s ease;
-  margin-bottom: 0; /* Added to remove gap below header */
+  margin-bottom: 0; 
 }
 
 .logo {
@@ -49,7 +49,7 @@ body {
 }
 
 .icon {
-  font-size: 24px; /* react-icons size */
+  font-size: 24px; 
   color: #1f2d5a;
 }
 
@@ -1917,85 +1917,7 @@ form {
   }
 }
 
-/* 
-.service-banner {
-  background: url('../assets/contactsection.jpeg') no-repeat center center/cover;
-  height: 35vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  color: #1f2d5a;
-}
 
-.service-banner-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 30px;
-}
-
-.breadcrumb {
-  font-size: 14px;
-  margin: 0;
-  opacity: 0.7;
-}
-
-.service-title {
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 900;
-  font-size: 54px;
-  margin: 5px 0 0 0;
-}
-
-/* 
-/* Container 
-.service-details-container {
-  display: flex;
-  gap: 30px;
-  padding: 0 50px 50px 50px;
-}
-
-/* 
-.sidebar {
-  width: 220px;
-  border-radius: 10px;
-  background: #fff;
-  border: 1px solid #eee;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-}
-
-.sidebar-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 16px;
-  cursor: pointer;
-  font-size: 15px;
-  transition: 0.3s;
-}
-
-.sidebar-item:hover {
-  background: #f4f6ff;
-}
-
-.sidebar-item.active {
-  background: #1a237e;
-  color: #fff;
-  font-weight: 600;
-}
-/*  
-.service-content {
-  flex: 1;
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-}
-
-.service-content img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 20px;
- }  */
 /* Doctor page */
 .doctor-banner {
   background: url('../assets/contactsection.jpeg') no-repeat center center/cover;
@@ -2395,7 +2317,7 @@ form {
 }
 /* news */
 .blog-page {
-  padding-top: 100px; /* adjust for navbar height */
+  padding-top: 100px;
   background: #f9f9f9;
   min-height: 100vh;
 }
@@ -2408,7 +2330,6 @@ form {
   padding: 20px;
 }
 
-/* Left side: main blogs */
 .blog-main {
   flex: 3;
 }
@@ -2466,7 +2387,7 @@ form {
   padding: 40px 0;
 }
 
-/* Sidebar */
+
 .blog-sidebar {
   flex: 1.2;
   background: #fff;
@@ -2716,10 +2637,10 @@ form {
 .map-responsive {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  padding-bottom: 56.25%; 
   height: 0;
   overflow: hidden;
-  border-radius: 8px; /* optional rounded corners */
+  border-radius: 8px; 
   margin: 40px 0;
 }
 

@@ -83,8 +83,7 @@ export default function AdminPanel() {
     <div className={`admin-panel ${sidebarOpen ? "sidebar-open" : ""}`}>
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} setActivePage={setActivePage} />
       <div className="main-content">
-        {/* Remove Topbar */}
-        {/* <Topbar onLogout={handleLogout} /> */}
+        
         <div className="dashboard-content">
           {renderPage()}
         </div>

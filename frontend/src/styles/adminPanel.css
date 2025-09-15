@@ -1,6 +1,4 @@
-/* ------------------------
-   General Reset
------------------------- */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,9 +10,6 @@ body {
   background: #f4f6f8;
 }
 
-/* ------------------------
-   Admin Login Page
------------------------- */
 .admin-login-container {
   display: flex;
   flex-direction: column;
@@ -72,19 +67,13 @@ body {
   transform: translateY(-2px);
 }
 
-/* ------------------------
-   Admin Panel Layout
------------------------- */
 .admin-panel {
   display: flex;
   min-height: 100vh;
-  padding-top: 100px; /* fixed header space */
+  padding-top: 100px; 
   transition: all 0.3s ease;
 }
 
-/* ------------------------
-   Sidebar
------------------------- */
 .sidebar {
   position: fixed;
   top: 150px;
@@ -100,7 +89,6 @@ body {
   flex-direction: column;
 }
 
-/* Collapsed (desktop) */
 .sidebar.closed {
   width: 70px;
 }
@@ -131,7 +119,6 @@ body {
   font-size: 20px;
 }
 
-/* Sidebar nav items */
 .sidebar-nav {
   list-style: none;
   padding: 0;
@@ -169,7 +156,6 @@ body {
   display: none;
 }
 
-/* Logout button */
 .sidebar-nav .logout-button {
   display: flex;
   align-items: center;
@@ -191,7 +177,6 @@ body {
   display: none;
 }
 
-/* Scrollbar */
 .sidebar::-webkit-scrollbar {
   width: 6px;
 }
@@ -200,9 +185,6 @@ body {
   border-radius: 3px;
 }
 
-/* ------------------------
-   Main Content
------------------------- */
 .main-content {
   flex: 1;
   margin-left: 250px;
@@ -215,9 +197,6 @@ body {
   margin-left: 70px;
 }
 
-/* ------------------------
-   Dashboard
------------------------- */
 .dashboard-title {
   font-size: 1.8rem;
   margin-bottom: 20px;
@@ -264,9 +243,6 @@ body {
   color: #555;
 }
 
-/* ------------------------
-   Messages Page
------------------------- */
 .messages-page {
   width: 100%;
   padding: 20px;
@@ -329,9 +305,6 @@ body {
   line-height: 1.5;
 }
 
-/* ------------------------
-   Appointments Page
------------------------- */
 .appointments-page {
   width: 100%;
   padding: 20px;
@@ -403,11 +376,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ------------------------
-   Responsive
------------------------- */
 
-/* Large screens */
 @media (max-width: 1200px) {
   .sidebar {
     width: 220px;
@@ -416,8 +385,6 @@ body {
     margin-left: 220px;
   }
 }
-
-/* Tablet & mobile */
 @media (max-width: 992px) {
   .sidebar {
     transform: translateX(-250px);
@@ -433,11 +400,10 @@ body {
   }
 
   .sidebar.open ~ .main-content {
-    margin-left: 0; /* overlay mode */
+    margin-left: 0; 
   }
 }
 
-/* Small tablets */
 @media (max-width: 768px) {
   .stats-cards {
     flex-direction: column;
@@ -460,7 +426,6 @@ body {
   }
 }
 
-/* Phones */
 @media (max-width: 576px) {
   .sidebar {
     width: 200px;

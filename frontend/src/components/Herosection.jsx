@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import doctorImage from "../assets/herosection.jpeg"; // replace with your uploaded image path
+import doctorImage from "../assets/herosection.jpeg"; 
 import { FaCalendarAlt, FaCreditCard, FaUsers } from "react-icons/fa";
 
 const Herosection = () => {

@@ -1,4 +1,4 @@
-// DoctorSlider.jsx
+
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -52,13 +52,13 @@ const DoctorSlider = () => {
         pagination={{ clickable: true }}
         breakpoints={{
           0: {
-            slidesPerView: 1, // mobile
+            slidesPerView: 1, 
           },
           768: {
-            slidesPerView: 2, // tablets
+            slidesPerView: 2, 
           },
           1024: {
-            slidesPerView: 3, // desktop
+            slidesPerView: 3, 
           },
         }}
       >

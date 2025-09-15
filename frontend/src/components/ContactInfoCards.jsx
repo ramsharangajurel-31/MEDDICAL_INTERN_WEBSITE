@@ -4,7 +4,7 @@ import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope, FaClock } from "react-icons/fa"
 export default function ContactInfoCards({ compact = false, contactPage = false }) {
   return (
     <>
-      {/* Only show header if NOT contact page */}
+    
       {!contactPage && (
         <div className="contact-header">
           <h5 className="header-title">GET IN TOUCH</h5>

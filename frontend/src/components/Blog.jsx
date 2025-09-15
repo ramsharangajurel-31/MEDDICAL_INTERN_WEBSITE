@@ -22,7 +22,7 @@ const Blog = () => {
   return (
     <div className="blog-page">
       <div className="blog-container">
-        {/* Left Side: Blog List */}
+      
         <div className="blog-main">
           {blogs.length > 0 ? (
             blogs.map((blog) => (
@@ -43,9 +43,7 @@ const Blog = () => {
           )}
         </div>
 
-        {/* Right Side: Sidebar */}
         <aside className="blog-sidebar">
-          {/* Search */}
           <div className="search-box">
             <FaSearch className="search-icon" />
             <input
@@ -59,7 +57,7 @@ const Blog = () => {
             />
           </div>
 
-          {/* No blogs found message */}
+       
           {blogs.length === 0 ? (
             <p className="no-blogs">No blogs found</p>
           ) : (
@@ -77,7 +75,7 @@ const Blog = () => {
                 ))}
               </ul>
 
-              {/* Pagination */}
+      
               <div className="pagination">
                 <button disabled={page === 1} onClick={() => setPage(page - 1)}> Prev</button>
                 <span>Page {page} of {Math.ceil(total / limit)}</span>
